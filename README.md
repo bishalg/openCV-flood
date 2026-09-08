@@ -55,9 +55,9 @@ graph TD
 
 ---
 
-## 3. Targeted Special Awards
+## 3. Categories
 
-### 🏆 1. Best Use of COOL ($1,000 Award)
+### Use of COOL
 We profiled 100 continuous iterations of Steger curvilinear extraction on full-resolution ($893 \times 1172$ px) disaster scenes, comparing **AWS Graviton3 (`c7g.2xlarge`) + COOL** against an Intel Sapphire Rapids (`c7i.2xlarge`) + Standard OpenCV baseline:
 
 | Metric | AWS Graviton3 + COOL | Intel x86 + Standard OpenCV | Advantage |
@@ -70,7 +70,7 @@ We profiled 100 continuous iterations of Steger curvilinear extraction on full-r
 - **Hardware SIMD Intrinsics**: Verified via `cv2.getBuildInformation()`, confirming active Arm `NEON_DOTPROD`, `NEON_FP16`, and `SVE` vector intrinsics compiled with `-mcpu=neoverse-v1`.
 - **Reproducibility**: Run `./scripts/benchmark_cool_vs_x86.sh` (see [docs/aws_benchmark_guide.md](docs/aws_benchmark_guide.md)).
 
-### 🏆 2. Agentic Vision ($1,000 Award)
+### Agentic Vision
 Rather than asking an LLM to blindly summarize pre-digested numbers, CurvFlood enforces a verifiable **Perception $\to$ Reasoning $\to$ Action** loop:
 - **Perception (`getFloodEvidence`)**: Triggered with only an `eventId`. The agent autonomously calls the tool, inspects flood metrics, and receives a cryptographic `evidenceToken`.
 - **Reasoning Policy**: Claude 3.5 Sonnet v2 acts as a strict policy enforcer, evaluating flood thresholds (`flood_signal == true`, `width_ratio >= 2.0`, controls $< 1.10$).
