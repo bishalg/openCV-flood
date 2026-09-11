@@ -8,6 +8,16 @@
 [![OpenCV: Version 5](https://img.shields.io/badge/OpenCV-5.0.0-5C3EE8.svg)](CMakeLists.txt)
 [![AWS Bedrock: Claude 3.5 Sonnet](https://img.shields.io/badge/AWS%20Bedrock-Claude%203.5%20Sonnet%20v2-FF9900.svg)](aws_infra/)
 [![AWS Graviton: COOL Accelerated](https://img.shields.io/badge/AWS%20Graviton3-COOL%20Optimized-green.svg)](scripts/benchmark_cool_vs_x86.sh)
+[![Devpost](https://img.shields.io/badge/Devpost-OpenCV%20AI%202026-003E54.svg)](https://opencv26.devpost.com/)
+
+---
+
+## Competition
+
+**[OpenCV AI Competition 2026, powered by AWS](https://opencv26.devpost.com/)**  
+Build vision systems that see, reason, and act with OpenCV 5 and Amazon Web Services (AWS). Win money and bragging rights!
+
+This repository is our public Real-World Impact track demo for that competition.
 
 ---
 
