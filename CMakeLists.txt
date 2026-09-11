@@ -107,15 +107,16 @@ else()
 endif()
 
 # ------------------------------------------------------------------------------
-# Dependency: OpenCV
+# Dependency: OpenCV + libcurl (CCTV HTTP snapshot demos)
 # ------------------------------------------------------------------------------
-find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs dnn)
+find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs dnn videoio highgui)
+find_package(CURL REQUIRED)
 
 # ------------------------------------------------------------------------------
 # Diagnostic Status Messages
 # ------------------------------------------------------------------------------
 message(STATUS "==================================================")
-message(STATUS "vision-perception Build Configuration Status:")
+message(STATUS "openCV-flood Build Configuration Status:")
 message(STATUS "  - Compiler:    ${CMAKE_CXX_COMPILER_ID} (Version ${CMAKE_CXX_COMPILER_VERSION})")
 message(STATUS "  - Build Type:  ${CMAKE_BUILD_TYPE}")
 message(STATUS "  - C++ Standard: C++${CMAKE_CXX_STANDARD}")

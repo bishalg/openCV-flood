@@ -93,45 +93,82 @@ Full scientific provenance and validation methodology documented in [`docs/flood
 
 ---
 
-## 5. Repository Structure
+## 5. Milestone Status (hackathon progress)
+
+Full ledger: [`docs/MILESTONES.md`](docs/MILESTONES.md) · presentation pack: [`docs/hackathon_presentation.md`](docs/hackathon_presentation.md)
+
+- [x] **M1–M6** — C++20 Steger core, evidence JSON, CLI, RMSE &lt; 0.1 px gate, benchmarks
+- [x] **M7** — Nepal flood geospatial pack (+88.4% surge, +121.1% width, dual controls)
+- [x] **M8** — AWS Bedrock Agentic Vision + COOL on Graviton3
+- [x] **M9** — Phase 1 static CCTV fixtures (`data/fixtures/cctv/`)
+- [x] **M10** — Phase 2 recorded video pipeline (`video_pipeline_demo`)
+- [x] **M11** — Phase 3 live HTTP snapshots (`live_snapshot_demo`, `mock://` safe mode)
+- [x] **M12** — Phase 4 CesiumJS 3D digital twin (`apps/cesium_viewer`)
+- [ ] **M13** — Phase 5 flood-alert production demo on the twin
+- [ ] **Next** — Robust holdout + SAR/CCTV waterline week (see [`docs/flood_robust_roadmap.md`](docs/flood_robust_roadmap.md))
+
+Realtime multi-source architecture: [`docs/flood_realtime_architecture.md`](docs/flood_realtime_architecture.md).
+
+---
+
+## 6. Repository Structure
 
 ```text
 openCV-flood/
-├── cmake/           # Compiler warnings (-Werror), toolchains, sanitizers
-├── core/            # Domain-agnostic C++20 perception core (Hessian math, Steger lines)
-├── domains/         # Geospatial flood pack (GeospatialFloodPack)
-├── adapters/        # C-ABI (libcurv_capi), OpenCV overlays, Android JNI, Apple Swift
-├── aws_infra/       # AWS CDK v2 Python IaC (Storage, Alert, IAM, Agent stacks)
-├── tools/           # Developer tools (curv_cli, synth_generator, evaluate, benchmark)
-├── data/            # Sentinel-2 disaster imagery, masks, evidence JSONs, and overlays
-├── docs/            # Full scientific documentation, benchmark guides, Devpost submission
-├── scripts/         # Benchmark suite, delta computation, formatting, and build scripts
-└── tests/           # GoogleTest unit test suite (16/16 ctest green)
+├── cmake/               # Compiler warnings (-Werror), toolchains, sanitizers
+├── core/                # Domain-agnostic C++20 perception core (Hessian math, Steger lines)
+├── domains/             # Geospatial flood pack (GeospatialFloodPack)
+├── adapters/            # C-ABI, OpenCV overlays, CCTV frame/video/HTTP sources
+├── apps/
+│   ├── desktop_pipeline_demo/
+│   └── cesium_viewer/   # Phase 4 3D twin (Vite + Cesium)
+├── aws_infra/           # AWS CDK v2 Python IaC (Storage, Alert, IAM, Agent stacks)
+├── tools/               # curv_cli, evaluate, video_pipeline_demo, live_snapshot_demo, …
+├── data/
+│   ├── flood_nepal_2026/  # metadata tracked; tiles download locally
+│   └── fixtures/          # CCTV day/night/rain + short AVI demos
+├── docs/                # Science write-up, Devpost, milestones, roadmaps
+├── scripts/             # Benchmark suite, delta computation, formatting
+└── tests/               # GoogleTest unit suite
 ```
 
 ---
 
-## 6. Build & Verification
+## 7. Build & Verification
 
 ### Prerequisites
 - Modern C++20 compiler (Clang 16+, GCC 13+, or Apple Clang)
 - CMake 3.25+ and Ninja
-- OpenCV 4.x or OpenCV 5.x
+- OpenCV 4.x or OpenCV 5.x (with `videoio` / `highgui`)
+- libcurl (for live HTTP snapshot demos)
+- Node 18+ (optional, Cesium twin)
 
 ### Build & Run Tests
 ```bash
-# Configure and build
 cmake -B build -GNinja -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j
-
-# Run full GoogleTest test suite (16/16 green)
 ctest --test-dir build --output-on-failure
 ```
 
-### Run Disaster Flood Pipeline Locally
+### Showcase demos
 ```bash
+# Satellite flood delta (local tiles under data/flood_nepal_2026/)
 python3 scripts/compute_flood_delta.py
 python3 scripts/make_comparison.py
+
+# Phase 2 — annotated recorded video
+./build/tools/video_pipeline_demo \
+  --input data/fixtures/cctv_video/caltrans_i80_sample.avi \
+  --output output/annotated_caltrans_i80.avi \
+  --fps-stride 2 --side-by-side
+
+# Phase 3 — presentation-safe live loop
+./build/tools/live_snapshot_demo \
+  --url mock://caltrans_i80_day --interval-sec 1 --duration-sec 5
+
+# Phase 4 — 3D twin
+python3 tools/geojson_exporter.py
+cd apps/cesium_viewer && npm install && npm run dev
 ```
 
 ### Deploy AWS Cloud Infrastructure (Optional)
@@ -144,6 +181,8 @@ cdk synth
 
 ---
 
-## 7. License
+## 8. License
 
 Licensed under the [Apache License, Version 2.0](LICENSE).
+
+> This repository is the **public OpenCV AI Competition 2026 demo**. Broader proprietary product work is maintained separately and is not mirrored here.

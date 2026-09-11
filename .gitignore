@@ -194,11 +194,19 @@ wheels/
 # Dataset directories (ignore flood binaries, permit metadata)
 data/flood_nepal_2026/*
 !data/flood_nepal_2026/metadata.json
+data/fixtures/cctv/http_cache/
 
+# Keep short offline demo/test clips under fixtures (Phase 2+).
+!data/fixtures/**/*.avi
+!data/fixtures/**/*.mp4
 
 # Exceptions: keep small golden fixture data or test config files explicitly
 !data/samples/
 !data/synthetic/
 !data/annotations/
+!data/fixtures/
 !.gitkeep
 
+
+node_modules/
+apps/cesium_viewer/dist/

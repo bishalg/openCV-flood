@@ -1,14 +1,24 @@
 # ==============================================================================
 # curv_adapters Static Library Target
 # ==============================================================================
+# Desktop builds include CCTV video + HTTP snapshot sources (OpenCV videoio + libcurl).
+# Keep palm/hand DNN detectors out of this public flood demo repo.
 
-add_library(curv_adapters STATIC
+set(CURV_ADAPTERS_SOURCES
     opencv/src/OverlayRenderer.cpp
+    cctv/src/CctvFrameSource.cpp
+    cctv/src/FrameRingBuffer.cpp
+    cctv/src/CctvStreamAdapter.cpp
+    cctv/src/CctvVideoSource.cpp
+    cctv/src/CctvHttpSnapshot.cpp
 )
+
+add_library(curv_adapters STATIC ${CURV_ADAPTERS_SOURCES})
 
 target_include_directories(curv_adapters
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/opencv/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cctv/include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/capi/include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/c_api/include>
         $<INSTALL_INTERFACE:include>
@@ -18,6 +28,8 @@ target_link_libraries(curv_adapters
     PUBLIC
         curv_core
         ${OpenCV_LIBS}
+        nlohmann_json::nlohmann_json
+        CURL::libcurl
 )
 
 vision_set_compiler_warnings(curv_adapters)
