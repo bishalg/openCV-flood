@@ -15,9 +15,7 @@
 ## Competition
 
 **[OpenCV AI Competition 2026, powered by AWS](https://opencv26.devpost.com/)**  
-Build vision systems that see, reason, and act with OpenCV 5 and Amazon Web Services (AWS). Win money and bragging rights!
-
-This repository is our public Real-World Impact track demo for that competition.
+Public Real-World Impact track demo: vision systems that **see, reason, and act** with OpenCV 5 and AWS (Bedrock agents, Graviton3 / COOL).
 
 ---
 
