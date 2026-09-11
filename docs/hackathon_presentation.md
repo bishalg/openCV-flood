@@ -33,7 +33,7 @@
 
 | # | Slide title | On-screen content | Speak |
 |---|---|---|---|
-| 4 | **Math in one slide** | Steger Hessian → Taylor zero-crossing · RMSE **&lt; 0.0301 px** (gate &lt; 0.1) | Differential geometry, not blob differencing |
+| 4 | **Math in one slide** | Steger Hessian → Taylor zero-crossing · RMSE **&lt; 0.0301 px** (gate &lt; 0.1) · OpenCV `sepFilter2D` + `parallel_for_` | Differential geometry on OpenCV 5, not blob differencing — see [`opencv_showcase.md`](opencv_showcase.md) |
 | 5 | **Flood proof** | +**88.4%** signature · +**121.1%** width · spatial **0.151×** · temporal **0.905×** | Dual controls kill false alarms |
 | 6 | **Architecture** | Fixtures → C++ adapters → pipeline → evidence JSON → Bedrock / Cesium | Point at phased ingestion Stages 1→3 |
 

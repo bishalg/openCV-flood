@@ -1,7 +1,7 @@
 # Glacier-Collapse Flood Disaster Analysis — Lende Khola / Bhote Koshi, Nepal
 ## Real-World Impact Track · OpenCV AI Competition 2026
 
-> **Repository**: `vision-perception`  
+> **Repository**: `openCV-flood` (public OpenCV AI Competition 2026 demo)  
 > **Event Date**: 26 August 2026 (~08:37 NPT)  
 > **Location**: Lende Khola / Bhote Koshi River Corridor, Rasuwa District, Bagmati Province, Nepal  
 > **Sensor**: European Space Agency (ESA) Sentinel-2 L2A Multispectral Instrument (10m GSD)  
@@ -36,7 +36,7 @@ All raw files are preserved in `data/flood_nepal_2026/raw/` with zero binary ima
 
 ## 3. Methodology
 
-The perception pipeline leverages the domain-agnostic `vision-perception` C++20 core coupled with the specialized `domains/geospatial` extension pack:
+The perception pipeline leverages the domain-agnostic C++20 OpenCV core in `openCV-flood` coupled with the specialized `domains/geospatial` extension pack:
 
 1. **Sub-Pixel Geometric Co-Registration**:
    - Sub-pixel alignment between PRE and POST scenes is verified via OpenCV's Enhanced Correlation Coefficient (`findTransformECC`) algorithm with translational motion modeling.

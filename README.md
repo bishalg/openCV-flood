@@ -21,6 +21,9 @@ On **26 August 2026**, a glacier collapse in the Langtang Himal initiated a cata
 3. **Autonomous, evidence-gated cloud decision loops** (AWS Bedrock Claude 3.5 Sonnet v2 with DynamoDB idempotency).
 4. **Cloud-Optimized vector acceleration** (Cloud-Optimized OpenCV Library on AWS Graviton3).
 
+**OpenCV showcase (what & how):** [`docs/opencv_showcase.md`](docs/opencv_showcase.md)  
+**Public vs proprietary boundary:** [`docs/IP_BOUNDARY.md`](docs/IP_BOUNDARY.md)
+
 ![Devpost Submission Thumbnail](docs/assets/devpost_thumbnail.jpg)
 
 ---
@@ -95,7 +98,7 @@ Full scientific provenance and validation methodology documented in [`docs/flood
 
 ## 5. Milestone Status (hackathon progress)
 
-Full ledger: [`docs/MILESTONES.md`](docs/MILESTONES.md) · presentation pack: [`docs/hackathon_presentation.md`](docs/hackathon_presentation.md)
+Full ledger: [`docs/MILESTONES.md`](docs/MILESTONES.md) · OpenCV tools: [`docs/opencv_showcase.md`](docs/opencv_showcase.md) · presentation: [`docs/hackathon_presentation.md`](docs/hackathon_presentation.md)
 
 - [x] **M1–M6** — C++20 Steger core, evidence JSON, CLI, RMSE &lt; 0.1 px gate, benchmarks
 - [x] **M7** — Nepal flood geospatial pack (+88.4% surge, +121.1% width, dual controls)

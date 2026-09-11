@@ -49,7 +49,9 @@ python3 tools/geojson_exporter.py
 cd apps/cesium_viewer && npm install && npm run dev
 ```
 
-Live demo slide pack + day-of runbook: [`docs/hackathon_presentation.md`](hackathon_presentation.md).
+Live demo slide pack + day-of runbook: [`docs/hackathon_presentation.md`](hackathon_presentation.md).  
+OpenCV module showcase: [`docs/opencv_showcase.md`](opencv_showcase.md).  
+Public vs proprietary: [`docs/IP_BOUNDARY.md`](IP_BOUNDARY.md).
 
 ---
 
